@@ -11,5 +11,4 @@ public interface UserService {
     public User findByUserName(String userName);
     public ArrayList<User> findAllUsersByUserGroup();
     public Boolean saveUser(User user);
-    public String getBio(String userName);
 }
