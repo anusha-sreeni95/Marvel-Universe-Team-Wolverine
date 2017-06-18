@@ -27,9 +27,6 @@ public class User {
     private String userPassword;
     @Column(name="user_group")
     private String userGroup;
-    @Column(name="bio",length = 10000)
-    private String bio;
-
     public String getUserName() {
         return userName;
     }
@@ -84,13 +81,5 @@ public class User {
 
     public void setUserGroup(String userGroup) {
         this.userGroup = userGroup;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
     }
 }
