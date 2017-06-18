@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DashBoard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/dashboard.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2 th:inline="text">[[${name}]] </h2>
+    <ul class="nav nav-pills nav-justified">
+        <li ><a href="/">Home</a></li>
+        <li ><a  href="/personaltask" data-toggle="tab">Personal ToDo List</a></li>
+        <li class="active"><a href="#squadtodo" >Squad ToDo List</a></li>
+        <li><a href="/switchsite">Switch Site</a></li>
+        <li><a  href="/signout">Logout</a> </li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="#squadtodo" class="tab-pane fade in active">
+            <h3>Squad To Do List</h3>
+            <div class="container">
+                <h2>Tasks</h2>
+                <form method="post" action="/addsharedtask">
+                    <input type="text" name="taskName" placeholder="Enter Task" />
+                    <button type="submit" class="glyphicon glyphicon-plus" ></button>
+                </form>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="task : ${tasks}">
+                        <td th:text="${task.taskName}"></td>
+                        <td th:switch="${task.taskStatus}">
+                        <td  th:case="'i'"><span class="badge">Incomplete</span></td>
+                        <td  th:case="*"><span class="badge">Complete</span></td>
+                        </td>
+                        <td th:switch="${task.taskStatus}">
+                        <td  th:case="'i'"><a href=""><span class="glyphicon glyphicon-remove"></span></a></td>
+                        <td  th:case="*"><span class="glyphicon glyphicon-ok"></span></td>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+

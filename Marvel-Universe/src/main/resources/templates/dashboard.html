@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DashBoard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/dashboard.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2 th:inline="text">[[${name}]] </h2>
+    <ul class="nav nav-pills nav-justified">
+        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+        <li><a href="/personaltask">Personal ToDo List</a></li>
+        <li><a  href="/squadtask">Squad ToDo List</a></li>
+        <li><a href="/switchsite">Switch Site</a></li>
+        <li><a  href="/signout">Logout</a> </li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>HOME</h3>
+            <div class="container">
+                <h2>Squad Members</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>Email</th>
+                        <th>SuperPower</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.userName}"></td>
+                        <td th:text="${user.userEmail}"></td>
+                        <td th:text="${user.userSuperPower}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
