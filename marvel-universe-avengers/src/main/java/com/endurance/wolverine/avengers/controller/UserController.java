@@ -49,9 +49,4 @@ public class UserController {
         userService.saveUser(user);
         return user;
     }
-
-    @RequestMapping(value="/user/bio/{userName}", method=RequestMethod.GET)
-    public String getBio(@PathVariable("userName") String userName,HttpServletResponse httpServletResponse){
-        return userService.getBio(userName);
-    }
 }
