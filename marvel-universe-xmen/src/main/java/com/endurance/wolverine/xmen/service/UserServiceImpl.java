@@ -54,9 +54,5 @@ public class UserServiceImpl implements UserService{
         }
     }
 
-    @Override
-    public String getBio(String userName){
-        return userRepository.findByUserName(userName).getBio();
-    }
 
 }
